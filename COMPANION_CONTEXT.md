@@ -43,12 +43,12 @@ what_works:
     from a consumer without a manual build step.
 
 incomplete_endpoints:
-  - Not pushed to GitHub. Git-initialised and committed locally only — this
-    build environment has no `gh` CLI / GitHub credentials. Jim must create
-    the remote (suggested `JKits123/orpheus-argus-contract`, private, same
-    visibility as sibling companion repos) and push.
-  - No git tag cut yet (would be `v1.0.0`) — cut this once pushed, since the
-    README instructs consumers to pin to a tag, not `#main`.
+  - ~~Not pushed to GitHub~~ ✅ done 2026-07-26 — pushed to
+    https://github.com/JKits123/orpheus-argus-contract.git (branch `master`),
+    tag `v1.0.0` cut and pushed. Verified via `git ls-remote origin`: both
+    `refs/heads/master` and `refs/tags/v1.0.0` present, both pointing at
+    commit `05e88ae`. Consumers can now run
+    `npm install github:JKits123/orpheus-argus-contract#v1.0.0`.
   - Zero companions wired to emit through this contract. That is explicitly
     out of scope for this session (see brief) — it's the next four sessions'
     work (VIGIL, SENTINEL, CERTATION, OPS), each independent.
@@ -115,15 +115,15 @@ last_session:
     git init + commit done locally.
   outcome: >
     Schema + validator complete and verified against real compiled/tested
-    output, not just written and assumed correct. Package not yet on
-    GitHub (no gh CLI/credentials in this environment) and no companion is
-    wired to it yet — both correctly out of this session's scope per the
-    brief ("this session does NOT wire any companion to the envelope yet").
+    output, not just written and assumed correct. Pushed to GitHub
+    (JKits123/orpheus-argus-contract, branch master, tag v1.0.0 — both
+    confirmed live via git ls-remote) same session, after Jim supplied the
+    repo URL. No companion is wired to it yet — correctly out of this
+    session's scope per the brief ("this session does NOT wire any
+    companion to the envelope yet").
   next_action: >
-    Jim: create JKits123/orpheus-argus-contract (private) on GitHub, push
-    this folder's git history, cut tag v1.0.0. Then, independently, one
-    session each for VIGIL / SENTINEL / CERTATION / OPS: add
-    `npm install github:JKits123/orpheus-argus-contract#v1.0.0`, build that
+    One session each, independently, for VIGIL / SENTINEL / CERTATION / OPS:
+    add `npm install github:JKits123/orpheus-argus-contract#v1.0.0`, build that
     companion's own sidecar/interception emit path per spec Section 3
     ("wrapping each companion's emit/dispatch path"), and — this is a human
     code-review step, not automatable — check that severity ANOMALY/BREACH
